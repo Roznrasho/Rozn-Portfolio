@@ -93,12 +93,21 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
+    id: 'project-portfolio',
+    title: 'My Portfolio',
+    description: 'This is the portfolio you are currently viewing. It is built with Next.js, TypeScript, and Tailwind CSS. It features a responsive design and an AI-powered summary generator.',
+    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Genkit'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com/Roznrasho/Rozn-Portfolio',
+    imageId: 'rozn-rasho-portrait'
+  },
+  {
     id: 'project-1',
     title: 'SmartPlates',
     description: 'A collaborative full-stack MERN application for discovering and sharing recipes. Users can create, edit, and browse recipes, with a focus on a clean and intuitive user experience.',
     techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
-    liveUrl: 'https://github.com/CommitCrush/smartplates',
-    githubUrl: 'https://github.com/CommitCrush/smartplates',
+    liveUrl: 'https://smart-plates.onrender.com/',
+    githubUrl: 'https://github.com/Roznrasho/smartplates',
     imageId: 'project-smartplates'
   },
   {
@@ -106,7 +115,7 @@ export const projects: Project[] = [
     title: 'QR-Code Generator',
     description: 'A simple and efficient web application for generating QR codes from any text or URL. Built with vanilla JavaScript, it provides a fast and easy-to-use tool for creating QR codes on the fly.',
     techStack: ['HTML', 'CSS', 'JavaScript'],
-    liveUrl: 'https://qr-code-seven-rho.vercel.app/',
+    liveUrl: 'https://roznrasho.github.io/QR-Code/',
     githubUrl: 'https://github.com/Roznrasho/QR-Code',
     imageId: 'project-qr-code'
   },
