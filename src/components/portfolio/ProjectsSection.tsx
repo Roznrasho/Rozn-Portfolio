@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { projects } from "@/lib/data";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -6,13 +8,18 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
+import { useLanguage } from "@/context/language";
 
 export default function ProjectsSection() {
+  const { t, lang } = useLanguage();
+
   return (
-    <Section id="projects" title="My Projects" className="bg-secondary/50">
+    <Section id="projects" title={t("section.projects")} className="bg-secondary/50">
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => {
           const projectImage = PlaceHolderImages.find(img => img.id === project.imageId);
+          const title = (lang === 'de' && project.title_de) ? project.title_de : project.title;
+          const description = (lang === 'de' && project.description_de) ? project.description_de : project.description;
           return (
             <Card key={project.id} className="flex flex-col overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1 duration-300">
               <CardHeader>
@@ -28,9 +35,9 @@ export default function ProjectsSection() {
                   </div>
                 )}
               </CardHeader>
-              <CardContent className="flex-grow">
-                <CardTitle className="text-2xl mb-2">{project.title}</CardTitle>
-                <CardDescription>{project.description}</CardDescription>
+                <CardContent className="flex-grow">
+                <CardTitle className="text-2xl mb-2">{title}</CardTitle>
+                <CardDescription>{description}</CardDescription>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.techStack.map((tech) => (
                     <Badge key={tech} variant="secondary">{tech}</Badge>
@@ -42,14 +49,14 @@ export default function ProjectsSection() {
                   <Button variant="outline" size="sm" asChild>
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-4 w-4" />
-                      GitHub
+                      {t("projects.github")}
                     </a>
                   </Button>
                 )}
                  <Button variant="outline" size="sm" asChild>
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="mr-2 h-4 w-4" />
-                      View Live
+                      {t("projects.view_live")}
                     </a>
                   </Button>
               </CardFooter>

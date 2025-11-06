@@ -1,6 +1,9 @@
+"use client";
+
 import { skills } from "@/lib/data";
 import { Section } from "./Section";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/context/language";
 import type React from "react";
 import {
   FileCode,
@@ -38,10 +41,12 @@ const iconMap: Record<string, React.ComponentType<any>> = {
 };
 
 export default function SkillsSection() {
+  const { t } = useLanguage();
+
   return (
     <Section
       id="skills"
-      title="My Skills"
+      title={t("section.skills")}
       className=""
       style={{ background: "linear-gradient(to right, rgb(30 75 115 / 100%), transparent)" }}
     >

@@ -1,11 +1,16 @@
+"use client";
+
 import { experiences } from "@/lib/data";
 import { Section } from "./Section";
 import { Briefcase, GraduationCap } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/context/language";
 
 export default function ExperienceSection() {
+  const { t, lang } = useLanguage();
+
   return (
-    <Section id="experience" title="My Journey">
+    <Section id="experience" title={t("section.experience")}>
       <div className="relative">
         <div className="absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2 hidden md:block" />
         <div className="space-y-12">
@@ -56,7 +61,7 @@ export default function ExperienceSection() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">{exp.description}</p>
+                    <p className="text-muted-foreground">{lang === 'de' && exp.description_de ? exp.description_de : exp.description}</p>
                   </CardContent>
                 </Card>
               </div>

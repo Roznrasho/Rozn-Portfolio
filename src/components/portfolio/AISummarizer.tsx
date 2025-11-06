@@ -14,6 +14,7 @@ import { GradientButton } from "./GradientButton";
 import { Loader2, Sparkles } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/context/language";
 
 const formSchema = z.object({
   jobDescription: z.string().min(50, "Please provide a more detailed job description (at least 50 characters)."),
@@ -24,6 +25,7 @@ export default function AISummarizer() {
   const [summary, setSummary] = React.useState("");
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
   const { toast } = useToast();
+  const { t, lang } = useLanguage();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -38,9 +40,13 @@ export default function AISummarizer() {
 
     try {
       const allProjectsDetails = projects
-        .map(p => `Project: ${p.title}\nDescription: ${p.description}\nTechnologies: ${p.techStack.join(', ')}`)
+        .map(p => {
+          const title = lang === 'de' && p.title_de ? p.title_de : p.title;
+          const desc = lang === 'de' && p.description_de ? p.description_de : p.description;
+          return `Project: ${title}\nDescription: ${desc}\nTechnologies: ${p.techStack.join(', ')}`;
+        })
         .join('\n\n');
-      
+
       const combinedProjectInfo = `The candidate is ${personalInfo.name}. Here are the project details from her portfolio:\n\n${allProjectsDetails}`;
 
       const result = await summarizeProjectDetailsForJob({
@@ -68,11 +74,9 @@ export default function AISummarizer() {
   };
 
   return (
-    <Section id="contact" title="AI-Powered Summary" className="bg-secondary/50">
+    <Section id="contact" title={t("section.ai_summary")} className="bg-secondary/50">
       <div className="max-w-3xl mx-auto text-center">
-        <p className="mb-8 text-lg text-muted-foreground">
-          Interested in how my skills fit your needs? Paste your job description below, and let AI generate a tailored summary of my qualifications based on my projects.
-        </p>
+        <p className="mb-8 text-lg text-muted-foreground">{t("ai.description")}</p>
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -83,8 +87,8 @@ export default function AISummarizer() {
                 <FormItem>
                   <FormLabel className="sr-only">Job Description</FormLabel>
                   <FormControl>
-                    <Textarea
-                      placeholder="Paste the job description here..."
+            <Textarea
+              placeholder={t("ai.placeholder_job")}
                       className="min-h-[150px] bg-background text-base"
                       {...field}
                     />
@@ -97,12 +101,12 @@ export default function AISummarizer() {
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Generating...
+                  {t("ai.generating")}
                 </>
               ) : (
                 <>
                   <Sparkles className="mr-2 h-4 w-4" />
-                  Generate Summary
+                  {t("ai.generate")}
                 </>
               )}
             </GradientButton>
@@ -112,14 +116,12 @@ export default function AISummarizer() {
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="sm:max-w-2xl">
-          <DialogHeader>
+            <DialogHeader>
             <DialogTitle className="text-2xl flex items-center gap-2">
               <Sparkles className="text-primary" />
-              Tailored Project Summary
+              {t("ai.generated_summary_heading")}
             </DialogTitle>
-            <DialogDescription>
-              Here is an AI-generated summary of my projects based on the job description you provided.
-            </DialogDescription>
+            <DialogDescription>{t("ai.generated_summary_heading")}</DialogDescription>
           </DialogHeader>
           <div className="prose prose-sm max-w-none text-muted-foreground max-h-[60vh] overflow-y-auto pr-2">
             <p>{summary}</p>

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { personalInfo } from "@/lib/data";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -5,9 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
 import { Section } from "./Section";
 import { GradientButton } from "./GradientButton";
+import { useLanguage } from "@/context/language";
 
 export default function HeroSection() {
   const portrait = PlaceHolderImages.find(img => img.id === 'rozn-rasho-portrait');
+  const { t } = useLanguage();
 
   return (
     <Section id="home" className="pt-24 md:pt-32">
@@ -30,7 +34,7 @@ export default function HeroSection() {
             {personalInfo.name}
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto md:mx-0">
-            {personalInfo.statement}
+            {t("hero.statement")}
           </p>
           <div className="mt-6 flex flex-wrap justify-center md:justify-start items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
@@ -48,7 +52,7 @@ export default function HeroSection() {
           </div>
           <div className="mt-8 flex gap-4 justify-center md:justify-start">
             <GradientButton asChild>
-              <a href="#contact">Get In Touch</a>
+              <a href="#contact">{t("hero.get_in_touch")}</a>
             </GradientButton>
             <Button variant="outline" asChild>
               <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer">

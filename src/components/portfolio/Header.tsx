@@ -3,6 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { navLinks } from "@/lib/data";
+import { useLanguage } from "@/context/language";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
@@ -11,6 +12,8 @@ export default function Header() {
   const [activeLink, setActiveLink] = React.useState("home");
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const { lang, toggleLang, t } = useLanguage();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +37,7 @@ export default function Header() {
   const NavLinks = ({ className }: { className?: string }) => (
     <nav className={cn("flex items-center gap-2", className)}>
       {navLinks.map((link) => (
-        <Button
+          <Button
           key={link.name}
           variant="ghost"
           asChild
@@ -46,7 +49,10 @@ export default function Header() {
             "font-semibold"
           )}
         >
-          <Link href={link.href} onClick={() => setIsMenuOpen(false)}>{link.name}</Link>
+          <Link href={link.href} onClick={() => setIsMenuOpen(false)}>{
+            // use translation key when present, fallback to link.name
+            typeof link.key === 'string' ? t(link.key) : link.name
+          }</Link>
         </Button>
       ))}
     </nav>
@@ -66,6 +72,12 @@ export default function Header() {
 
         <div className="hidden md:flex">
           <NavLinks />
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="sm" onClick={() => toggleLang()}>
+            {lang === 'en' ? 'DE' : 'EN'}
+          </Button>
         </div>
 
         <div className="md:hidden">
