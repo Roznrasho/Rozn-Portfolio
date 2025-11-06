@@ -1,20 +1,23 @@
 import { cn } from "@/lib/utils";
-import type { ReactNode } from "react";
+import type { ReactNode, CSSProperties } from "react";
 
 export function Section({
   className,
   children,
   id,
   title,
+  style,
 }: {
   className?: string;
   children: ReactNode;
   id: string;
   title?: string;
+  style?: CSSProperties;
 }) {
   return (
     <section
       id={id}
+      style={style}
       className={cn("py-16 md:py-24 animate-in fade-in slide-in-from-bottom-8 duration-700", className)}
     >
       <div className="container mx-auto px-4">
