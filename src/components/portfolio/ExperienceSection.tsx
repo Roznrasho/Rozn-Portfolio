@@ -13,7 +13,7 @@ export default function ExperienceSection() {
     <Section
       id="experience"
       title={t("section.experience")}
-      style={{ background: 'linear-gradient(to right, rgba(30,75,115,0.48), transparent)' }}
+      style={{ background: 'linear-gradient(to right, rgba(235,212,203,0.48), transparent)' }}
     >
       <div className="relative">
         {/* Vertikale Linie im Hintergrund */}
