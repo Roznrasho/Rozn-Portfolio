@@ -54,7 +54,7 @@ export default function ExperienceSection() {
                     : "md:col-start-1 md:row-start-1 md:text-right"
                 }`}
               >
-                <Card className="w-full border border-primary/30 shadow-lg">
+                <Card className="w-full border border-[#9d8189]/30 shadow-lg">
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
                        <div className="p-2 bg-primary/10 rounded-full">

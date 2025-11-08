@@ -25,7 +25,7 @@ export default function ProjectsSection() {
           const title = (lang === 'de' && project.title_de) ? project.title_de : project.title;
           const description = (lang === 'de' && project.description_de) ? project.description_de : project.description;
           return (
-            <Card key={project.id} className="flex flex-col overflow-hidden border border-primary/30 shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 duration-300">
+            <Card key={project.id} className="flex flex-col overflow-hidden border border-[#9d8189]/30 shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 duration-300">
               <CardHeader>
                 {projectImage && (
                   <div className="aspect-video relative overflow-hidden rounded-t-lg">
