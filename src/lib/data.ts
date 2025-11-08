@@ -54,8 +54,8 @@ export const experiences: Experience[] = [
     role_de: 'Berufserfahrung',
     company: 'Deutsches Rotes Kreuz',
     period: '2022 - Present',
-    description: 'Responsible for child care and early education. Developed educational programs and fostered a positive learning environment.',
-    description_de: 'Verantwortlich für die Kinderbetreuung und frühkindliche Bildung. Entwicklung von Bildungsprogrammen und Förderung einer positiven Lernumgebung.',
+    description: 'Volunteer work, e.g., assisting at blood donation drives.',
+    description_de: 'Ehrenamtliche Tätigkeit, z. B. Unterstützung bei Blutspendenaktionen.',
     type: 'Work',
   },
     {
