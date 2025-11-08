@@ -39,12 +39,16 @@ export default function ContactSection() {
   };
 
   return (
-    <Section id="contact" title={t("section.contact")} className="bg-secondary/50">
+    <Section
+      id="contact"
+      title={t("section.contact")}
+      style={{ background: 'linear-gradient(to right, rgba(30 75 115 / 100%), transparent)' }}
+    >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-start">
           <div>
             <h3 className="text-2xl font-bold mb-2">{t("contact.title")}</h3>
-            <p className="text-muted-foreground mb-6">{t("contact.description")}</p>
+            <p className=" mb-6">{t("contact.description")}</p>
 
             <Card className="mb-6">
               <CardHeader className="flex items-center gap-3 p-4">
@@ -59,7 +63,7 @@ export default function ContactSection() {
             {/* Phone and Location removed per request */}
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="bg-background p-6 rounded-lg shadow-md">
+          <form onSubmit={handleSubmit(onSubmit)} className="bg-background p-6 rounded-lg shadow-lg border border-primary/30">
             <div className="grid gap-4">
               <label className="sr-only">{t("contact.name")}</label>
               <Input placeholder={t("contact.name")} {...register("name")} />

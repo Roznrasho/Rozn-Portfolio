@@ -14,14 +14,18 @@ export default function ProjectsSection() {
   const { t, lang } = useLanguage();
 
   return (
-    <Section id="projects" title={t("section.projects")} className="bg-secondary/50">
+    <Section
+      id="projects"
+      title={t("section.projects")}
+      style={{ background: 'linear-gradient(to right, rgba(30,75,115,0.46), transparent)' }}
+    >
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => {
           const projectImage = PlaceHolderImages.find(img => img.id === project.imageId);
           const title = (lang === 'de' && project.title_de) ? project.title_de : project.title;
           const description = (lang === 'de' && project.description_de) ? project.description_de : project.description;
           return (
-            <Card key={project.id} className="flex flex-col overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1 duration-300">
+            <Card key={project.id} className="flex flex-col overflow-hidden border border-primary/30 shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 duration-300">
               <CardHeader>
                 {projectImage && (
                   <div className="aspect-video relative overflow-hidden rounded-t-lg">

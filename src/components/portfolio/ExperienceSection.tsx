@@ -10,7 +10,11 @@ export default function ExperienceSection() {
   const { t, lang } = useLanguage();
 
   return (
-    <Section id="experience" title={t("section.experience")}>
+    <Section
+      id="experience"
+      title={t("section.experience")}
+      style={{ background: 'linear-gradient(to right, rgba(30,75,115,0.48), transparent)' }}
+    >
       <div className="relative">
         {/* Vertikale Linie im Hintergrund */}
         <div className="absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2 hidden md:block" />
@@ -50,7 +54,7 @@ export default function ExperienceSection() {
                     : "md:col-start-1 md:row-start-1 md:text-right"
                 }`}
               >
-                <Card className="w-full">
+                <Card className="w-full border border-primary/30 shadow-lg">
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
                        <div className="p-2 bg-primary/10 rounded-full">
