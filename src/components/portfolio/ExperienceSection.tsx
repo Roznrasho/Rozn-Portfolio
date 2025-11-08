@@ -12,6 +12,7 @@ export default function ExperienceSection() {
   return (
     <Section id="experience" title={t("section.experience")}>
       <div className="relative">
+        {/* Vertikale Linie im Hintergrund */}
         <div className="absolute left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2 hidden md:block" />
         <div className="space-y-12">
           {experiences.map((exp, index) => (
@@ -19,28 +20,34 @@ export default function ExperienceSection() {
               key={index}
               className="md:grid md:grid-cols-2 md:gap-8 items-start relative"
             >
-              <div
-                className={`md:flex ${
-                  index % 2 === 0 ? "md:justify-end" : "md:justify-start md:col-start-2"
-                }`}
-              >
-                {index % 2 === 0 && (
-                   <div className="hidden md:block text-right pr-8">
-                     <p className="font-semibold text-muted-foreground">{exp.period}</p>
-                   </div>
-                )}
-              </div>
               
+              {/* NEUER BLOCK: Absolute Positionierung der Periode LINKS vom Punkt (für gerade Indizes) */}
+              {index % 2 === 0 && (
+                 <div className="absolute top-5 left-1/2 -translate-x-1/2 hidden md:block z-20" style={{ transform: 'translateX(-100%)' }}>
+                   <p className="font-semibold text-sm text-muted-foreground pr-3 text-right whitespace-nowrap">{exp.period}</p>
+                 </div>
+              )}
+
+              {/* BLOCK: Zentraler Punkt (bleibt zentriert auf der Linie) */}
               <div
-                className={`flex items-center absolute top-5 left-1/2 -translate-x-1/2
-                  ${index % 2 === 0 ? "md:left-1/2" : "md:left-1/2"} hidden md:flex`}
+                className={`flex items-center absolute top-5 left-1/2 -translate-x-1/2 hidden md:flex z-30`}
               >
-                <div className="w-4 h-4 rounded-full bg-primary z-10" />
+                <div className="w-4 h-4 rounded-full bg-primary" />
               </div>
 
+              {/* NEUER BLOCK: Absolute Positionierung der Periode RECHTS vom Punkt (für ungerade Indizes) */}
+              {index % 2 !== 0 && (
+                 <div className="absolute top-5 left-1/2 -translate-x-1/2 hidden md:block z-20" style={{ transform: 'translateX(30px)' }}>
+                   <p className="font-semibold text-sm text-muted-foreground pl-3 text-left whitespace-nowrap">{exp.period}</p>
+                 </div>
+              )}
+              
+              {/* BLOCK: Die eigentliche Karte */}
               <div
                 className={`col-span-1 ${
-                  index % 2 === 0 ? "md:text-left" : "md:col-start-1 md:row-start-1 md:text-right"
+                  index % 2 === 0
+                    ? "md:col-start-2 md:row-start-1 md:text-left"
+                    : "md:col-start-1 md:row-start-1 md:text-right"
                 }`}
               >
                 <Card className="w-full">
@@ -56,7 +63,7 @@ export default function ExperienceSection() {
                        <div>
                          <CardTitle className="text-xl">{lang === 'de' && exp.role_de ? exp.role_de : exp.role}</CardTitle>
                          <CardDescription>{exp.company}</CardDescription>
-                         <p className="md:hidden text-sm text-muted-foreground mt-1">{exp.period}</p>
+                         {/* Mobiler Zeitraum bleibt entfernt */}
                        </div>
                     </div>
                   </CardHeader>
@@ -64,18 +71,6 @@ export default function ExperienceSection() {
                     <p className="text-muted-foreground">{lang === 'de' && exp.description_de ? exp.description_de : exp.description}</p>
                   </CardContent>
                 </Card>
-              </div>
-              
-              <div
-                className={`md:flex ${
-                  index % 2 !== 0 ? "md:justify-start" : "hidden"
-                }`}
-              >
-                {index % 2 !== 0 && (
-                   <div className="hidden md:block pl-8">
-                     <p className="font-semibold text-muted-foreground">{exp.period}</p>
-                   </div>
-                )}
               </div>
             </div>
           ))}
