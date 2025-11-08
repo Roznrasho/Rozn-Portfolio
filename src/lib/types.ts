@@ -10,6 +10,7 @@ export type Skill = {
 
 export type Experience = {
   role: string;
+  role_de?: string;
   company: string;
   period: string;
   description: string;

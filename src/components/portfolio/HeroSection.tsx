@@ -42,10 +42,6 @@ export default function HeroSection() {
               <a href={`mailto:${personalInfo.email}`} className="hover:text-primary transition-colors">{personalInfo.email}</a>
             </div>
             <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4 text-primary" />
-              <span>{personalInfo.phone}</span>
-            </div>
-            <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-primary" />
               <span>{personalInfo.location}</span>
             </div>
