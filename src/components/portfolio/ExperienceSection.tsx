@@ -54,7 +54,7 @@ export default function ExperienceSection() {
                         )}
                        </div>
                        <div>
-                         <CardTitle className="text-xl">{exp.role}</CardTitle>
+                         <CardTitle className="text-xl">{lang === 'de' && exp.role_de ? exp.role_de : exp.role}</CardTitle>
                          <CardDescription>{exp.company}</CardDescription>
                          <p className="md:hidden text-sm text-muted-foreground mt-1">{exp.period}</p>
                        </div>
