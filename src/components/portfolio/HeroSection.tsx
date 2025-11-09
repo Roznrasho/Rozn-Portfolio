@@ -50,12 +50,12 @@ export default function HeroSection() {
             <GradientButton asChild>
               <a href="#contact">{t("hero.get_in_touch")}</a>
             </GradientButton>
-            <Button variant="outline" asChild>
+            <Button variant="default" size="default" asChild>
               <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer">
                 <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
               </a>
             </Button>
-            <Button variant="outline" asChild>
+            <Button variant="default" size="default" asChild>
               <a href={personalInfo.github} target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-4 w-4" /> GitHub
               </a>

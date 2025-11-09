@@ -81,15 +81,30 @@ export default function ProjectsScrollPin({ items }: { items?: Item[] }) {
     };
   }, [data]);
 
-  // animate image transitions (fade) when active changes
+  // initial set and animate image transitions: come in from left and scale
   useEffect(() => {
     if (!imageRef.current) return;
+
     const wrappers = imageRef.current.querySelectorAll<HTMLElement>('.projects-image');
+
+    // set base state for all wrappers (start much further left for a very strong pull)
     wrappers.forEach((el, idx) => {
+      gsap.set(el, { autoAlpha: idx === active ? 1 : 0, x: idx === active ? 0 : -520, scale: idx === active ? 1 : 0.5 });
+    });
+
+    // animate into view the active one, hide others by moving left + scaling down
+    wrappers.forEach((el, idx) => {
+      gsap.killTweensOf(el);
       if (idx === active) {
-        gsap.to(el, { autoAlpha: 1, duration: 0.4, ease: 'power2.out' });
+        // slower, stronger entrance from further left (very pronounced pull)
+        gsap.fromTo(
+          el,
+          { autoAlpha: 0, x: -520, scale: 0.5 },
+          { autoAlpha: 1, x: 0, scale: 1, duration: 1.4, ease: 'power4.out' }
+        );
       } else {
-        gsap.to(el, { autoAlpha: 0, duration: 0.4, ease: 'power2.out' });
+        // pull even further left and slower when leaving
+        gsap.to(el, { autoAlpha: 0, x: -640, scale: 0.5, duration: 1.2, ease: 'power4.in' });
       }
     });
   }, [active]);
@@ -116,7 +131,7 @@ export default function ProjectsScrollPin({ items }: { items?: Item[] }) {
               {data.map((d, i) => (
                 <div
                   key={d.id}
-                  className={`projects-image w-full h-full flex items-center justify-center transition-opacity duration-300 ${i === active ? 'opacity-100' : 'opacity-0'}`}
+                  className={`projects-image w-full h-full flex items-center justify-center`}
                   style={{ position: i === active ? 'relative' : 'absolute', inset: 0 }}
                 >
                   <div className="relative w-full h-full flex items-center justify-center p-0">
@@ -147,8 +162,8 @@ export default function ProjectsScrollPin({ items }: { items?: Item[] }) {
                   <p className="text-muted-foreground max-w-prose">{d.description}</p>
                   <div className="mt-6 flex gap-3">
                     {d.githubUrl && (
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={d.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <Button variant="default" size="default" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                        <a href={d.githubUrl} target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'hsl(300 24% 75%)', color: 'hsl(var(--primary-foreground))' }}>
                           <Github className="mr-2 h-4 w-4" />
                           View Code
                         </a>
@@ -156,8 +171,8 @@ export default function ProjectsScrollPin({ items }: { items?: Item[] }) {
                     )}
 
                     {d.liveUrl && (
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={d.liveUrl} target="_blank" rel="noopener noreferrer">
+                      <Button variant="default" size="default" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                        <a href={d.liveUrl} target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'hsl(300 24% 75%)', color: 'hsl(var(--primary-foreground))' }}>
                           <ExternalLink className="mr-2 h-4 w-4" />
                           View Live
                         </a>

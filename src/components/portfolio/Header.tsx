@@ -75,13 +75,13 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" onClick={() => toggleLang()}>
+          <Button variant="ghost" size="default" onClick={() => toggleLang()}>
             {lang === 'en' ? 'DE' : 'EN'}
           </Button>
         </div>
 
         <div className="md:hidden">
-          <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <Button variant="default" size="default" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X /> : <Menu />}
           </Button>
         </div>

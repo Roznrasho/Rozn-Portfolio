@@ -9,8 +9,8 @@ const gradientButtonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-gradient-to-r from-primary to-[#E1D5E0] hover:opacity-90 shadow-md",
+        // switched from gradient to solid primary background as requested
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md",
       },
       size: {
         default: "h-10 px-4 py-2",
