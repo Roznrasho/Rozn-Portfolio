@@ -4,7 +4,7 @@ export const navLinks: NavLink[] = [
   { name: 'Home', href: '#home', key: 'nav.home' },
   { name: 'Skills', href: '#skills', key: 'nav.skills' },
   { name: 'Experience', href: '#experience', key: 'nav.experience' },
-  { name: 'Projects', href: '#projects', key: 'nav.projects' },
+  { name: 'Projects', href: '#projects-scroll', key: 'nav.projects' },
   { name: 'Contact', href: '#contact', key: 'nav.contact' },
 ];
 
