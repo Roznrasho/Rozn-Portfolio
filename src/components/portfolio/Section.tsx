@@ -7,12 +7,14 @@ export function Section({
   id,
   title,
   style,
+  underlineColor,
 }: {
   className?: string;
   children: ReactNode;
   id: string;
   title?: string;
   style?: CSSProperties;
+  underlineColor?: string;
 }) {
   return (
     <section
@@ -23,8 +25,14 @@ export function Section({
       <div className="container mx-auto px-4">
         {title && (
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            {title}
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-[#E1D5E0] mx-auto mt-2 rounded-full" />
+            <span className="inline-block">
+              {title}
+              {underlineColor ? (
+                <div className="block h-1 w-full mt-2 rounded-full" style={{ backgroundColor: underlineColor }} />
+              ) : (
+                <div className="block h-1 w-full mt-2 rounded-full bg-gradient-to-r from-primary to-[#E1D5E0]" />
+              )}
+            </span>
           </h2>
         )}
         {children}
