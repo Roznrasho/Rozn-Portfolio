@@ -42,6 +42,7 @@ export default function ContactSection() {
     <Section
       id="contact"
       title={t("section.contact")}
+      underlineColor={"hsl(var(--primary))"}
       style={{ background: 'linear-gradient(to right, rgba(30 75 115 / 100%), transparent)' }}
     >
       <div className="container mx-auto px-4">
