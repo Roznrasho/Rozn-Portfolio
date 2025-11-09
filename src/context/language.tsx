@@ -15,11 +15,21 @@ type LanguageContextValue = {
 const LanguageContext = React.createContext<LanguageContextValue | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = React.useState<Lang>(() => {
-    if (typeof window === "undefined") return "en";
-    return (localStorage.getItem("site-lang") as Lang) || "en";
-  });
+  // Start with a deterministic server-friendly default to avoid hydration mismatches.
+  const [lang, setLangState] = React.useState<Lang>("en");
 
+  // After mount, read persisted preference from localStorage and apply it.
+  React.useEffect(() => {
+    try {
+      const stored = (localStorage.getItem("site-lang") as Lang) || "en";
+      if (stored !== lang) setLangState(stored);
+    } catch {
+      // ignore
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Persist changes and update document language attribute.
   React.useEffect(() => {
     try {
       localStorage.setItem("site-lang", lang);
