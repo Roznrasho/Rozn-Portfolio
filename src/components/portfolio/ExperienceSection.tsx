@@ -13,6 +13,7 @@ export default function ExperienceSection() {
     <Section
       id="experience"
       title={t("section.experience")}
+      underlineColor="#7C95B0"
       style={{ background: 'linear-gradient(to right, rgba(125,79,80,0.48), transparent)' }}
     >
       <div className="relative">
