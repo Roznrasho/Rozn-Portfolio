@@ -42,7 +42,7 @@ export default function Header() {
           variant="ghost"
           asChild
           className={cn(
-            "transition-colors",
+            "transition-colors text-base md:text-lg",
             activeLink === link.href.substring(1)
               ? "text-primary-foreground bg-primary/20 hover:bg-primary/30"
               : "text-foreground hover:text-primary",
@@ -75,7 +75,12 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="default" onClick={() => toggleLang()}>
+          <Button
+            variant="ghost"
+            size="default"
+            onClick={() => toggleLang()}
+            className="transition-colors text-foreground hover:text-primary font-semibold"
+          >
             {lang === 'en' ? 'DE' : 'EN'}
           </Button>
         </div>
