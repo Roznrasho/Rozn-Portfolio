@@ -47,6 +47,7 @@ export default function SkillsSection() {
     <Section
       id="skills"
       title={t("section.skills")}
+      underlineColor={"hsl(var(--primary))"}
       className=""
       style={{ background: "linear-gradient(to right, rgb(30 75 115 / 100%), transparent)" }}
     >
