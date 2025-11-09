@@ -113,6 +113,7 @@ export default function ProjectsScrollPin({ items }: { items?: Item[] }) {
     <Section
       id="projects-scroll"
       title="Meine Projekte"
+      underlineColor={"hsl(var(--primary))"}
       style={{
         backgroundImage: 'linear-gradient(to right, rgba(30,75,115,0.46), transparent)',
         backgroundColor: 'rgba(30,75,115,0.08)',
