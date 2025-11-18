@@ -21,7 +21,7 @@ export default function ExperienceSection() {
     >
       <div className="relative">
   {/* Vertikale Linie im Hintergrund */}
-  <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 hidden md:block" style={{ backgroundColor: '#7C95B0' }} />
+  <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 hidden md:block" style={{ backgroundColor: '#63778C' }} />
         <div className="space-y-12">
           {experiences.map((exp, index) => (
             <div
@@ -40,7 +40,7 @@ export default function ExperienceSection() {
               <div
                 className={`hidden md:flex items-center absolute top-5 left-1/2 -translate-x-1/2 z-30`}
               >
-                <div className="w-5 h-5 rounded-full" style={{ backgroundColor: '#7C95B0' }} />
+                <div className="w-5 h-5 rounded-full" style={{ backgroundColor: '#63778C' }} />
               </div>
 
               {/* NEUER BLOCK: Absolute Positionierung der Periode RECHTS vom Punkt (für ungerade Indizes) */}
@@ -58,7 +58,7 @@ export default function ExperienceSection() {
                     : "md:col-start-1 md:row-start-1 md:text-right"
                 }`}
               >
-                <Card className="w-full border border-[#9d8189]/30 shadow-lg">
+                <Card className="w-full border border-[#9d8189]/30 shadow-timeline card-anim">
                   <CardHeader>
                     <div className="flex items-center gap-3 mb-2">
              <div className="p-2 bg-primary/10 rounded-full">
