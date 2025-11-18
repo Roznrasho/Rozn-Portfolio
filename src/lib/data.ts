@@ -43,7 +43,7 @@ export const experiences: Experience[] = [
   {
     role: 'Fullstack Web Development',
     role_de: 'Fullstack Webentwicklung',
-    company: 'DCI Digital Career Institute GmbH',
+    company: 'DCI Digital Career Institute GmbH, Berlin',
     period: '2024 - 2025',
     description: 'Completed an intensive 19-month training program covering the entire MERN stack, including modern technologies like React, Node.js, Tailwind, MongoDB, and Next.js. Developed several full-stack projects from scratch.',
     description_de: 'Abschluss eines intensiven 19-monatigen Trainingsprogramms, das den gesamten MERN-Stack abdeckte, einschließlich moderner Technologien wie React, Node.js, Tailwind, MongoDB und Next.js. Entwicklung mehrerer Fullstack-Projekte von Grund auf.',
@@ -52,7 +52,7 @@ export const experiences: Experience[] = [
   {
     role: 'Work Experience',
     role_de: 'Berufserfahrung',
-    company: 'Deutsches Rotes Kreuz',
+    company: 'Deutsches Rotes Kreuz, Oer-Erkenschwick',
     period: '2022 - Present',
     description: 'Volunteer work, e.g., assisting at blood donation drives.',
     description_de: 'Ehrenamtliche Tätigkeit, z. B. Unterstützung bei Blutspendenaktionen.',

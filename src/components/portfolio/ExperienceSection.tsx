@@ -14,7 +14,7 @@ export default function ExperienceSection() {
       id="experience"
       title={t("section.experience")}
       underlineColor="#7C95B0"
-      style={{ background: 'linear-gradient(to right, rgba(125,79,80,0.48), transparent)' }}
+      style={{ backgroundColor: 'rgba(235,212,203,0.48)' }}
     >
       <div className="relative">
   {/* Vertikale Linie im Hintergrund */}
@@ -29,7 +29,7 @@ export default function ExperienceSection() {
               {/* NEUER BLOCK: Absolute Positionierung der Periode LINKS vom Punkt (für gerade Indizes) */}
               {index % 2 === 0 && (
                  <div className="absolute top-5 left-1/2 -translate-x-1/2 hidden md:block z-20" style={{ transform: 'translateX(-100%)' }}>
-                   <p className="font-semibold text-xl text-foreground pr-3 text-right whitespace-nowrap">{exp.period}</p>
+                   <p className="font-semibold text-xl md:text-2xl text-muted-foreground pr-3 text-right whitespace-nowrap">{exp.period}</p>
                  </div>
               )}
 
@@ -37,13 +37,13 @@ export default function ExperienceSection() {
               <div
                 className={`flex items-center absolute top-5 left-1/2 -translate-x-1/2 hidden md:flex z-30`}
               >
-                <div className="w-4 h-4 rounded-full" style={{ backgroundColor: '#7C95B0' }} />
+                <div className="w-5 h-5 rounded-full" style={{ backgroundColor: '#7C95B0' }} />
               </div>
 
               {/* NEUER BLOCK: Absolute Positionierung der Periode RECHTS vom Punkt (für ungerade Indizes) */}
               {index % 2 !== 0 && (
                  <div className="absolute top-5 left-1/2 -translate-x-1/2 hidden md:block z-20" style={{ transform: 'translateX(30px)' }}>
-                   <p className="font-semibold text-xl text-foreground pl-3 text-left whitespace-nowrap">{exp.period}</p>
+                   <p className="font-semibold text-xl md:text-2xl text-muted-foreground pl-3 text-left whitespace-nowrap">{exp.period}</p>
                  </div>
               )}
               
@@ -66,14 +66,14 @@ export default function ExperienceSection() {
             )}
              </div>
                        <div>
-                         <CardTitle className="text-xl">{lang === 'de' && exp.role_de ? exp.role_de : exp.role}</CardTitle>
+                         <CardTitle className="text-2xl md:text-3xl">{lang === 'de' && exp.role_de ? exp.role_de : exp.role}</CardTitle>
                          <CardDescription>{exp.company}</CardDescription>
                          {/* Mobiler Zeitraum bleibt entfernt */}
                        </div>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">{lang === 'de' && exp.description_de ? exp.description_de : exp.description}</p>
+                    <p className="text-lg md:text-xl text-muted-foreground">{lang === 'de' && exp.description_de ? exp.description_de : exp.description}</p>
                   </CardContent>
                 </Card>
               </div>

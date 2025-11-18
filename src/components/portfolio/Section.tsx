@@ -8,6 +8,7 @@ export function Section({
   title,
   style,
   underlineColor,
+  titleClassName,
 }: {
   className?: string;
   children: ReactNode;
@@ -15,6 +16,7 @@ export function Section({
   title?: string;
   style?: CSSProperties;
   underlineColor?: string;
+  titleClassName?: string;
 }) {
   return (
     <section
@@ -24,7 +26,7 @@ export function Section({
     >
       <div className="container mx-auto px-4">
         {title && (
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className={cn("text-3xl md:text-4xl font-bold text-center", titleClassName ?? "mb-12")}>
             <span className="inline-block">
               {title}
               {underlineColor ? (

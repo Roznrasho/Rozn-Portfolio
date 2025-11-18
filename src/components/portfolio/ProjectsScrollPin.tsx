@@ -112,7 +112,8 @@ export default function ProjectsScrollPin({ items }: { items?: Item[] }) {
   return (
     <Section
       id="projects-scroll"
-      title="Meine Projekte"
+  title="Meine Projekte"
+  titleClassName="-mb-20"
       underlineColor={"hsl(var(--primary))"}
       style={{
         backgroundImage: 'linear-gradient(to right, rgba(30,75,115,0.46), transparent)',
@@ -159,8 +160,8 @@ export default function ProjectsScrollPin({ items }: { items?: Item[] }) {
             {data.map((d) => (
               <div key={d.id} className="projects-panel min-h-[60vh] flex items-center">
                 <div>
-                  <h3 className="text-2xl font-semibold mb-3">{d.title}</h3>
-                  <p className="text-muted-foreground max-w-prose">{d.description}</p>
+                  <h3 className="text-3xl md:text-4xl font-semibold mb-3">{d.title}</h3>
+                  <p className="text-lg md:text-xl text-muted-foreground max-w-prose">{d.description}</p>
                   <div className="mt-6 flex gap-3">
                     {d.githubUrl && (
                       <Button variant="default" size="default" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
