@@ -14,11 +14,14 @@ export default function ExperienceSection() {
       id="experience"
       title={t("section.experience")}
       underlineColor="#7C95B0"
-      style={{ backgroundColor: 'rgba(235,212,203,0.48)' }}
+      style={{
+        backgroundImage: 'linear-gradient(to bottom, hsl(var(--background)), #FFFFFF)',
+        backgroundColor: 'hsl(var(--background))',
+      }}
     >
       <div className="relative">
   {/* Vertikale Linie im Hintergrund */}
-  <div className="absolute left-1/2 top-0 h-full w-0.5 bg-white -translate-x-1/2 hidden md:block" />
+  <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 hidden md:block" style={{ backgroundColor: '#7C95B0' }} />
         <div className="space-y-12">
           {experiences.map((exp, index) => (
             <div
@@ -35,7 +38,7 @@ export default function ExperienceSection() {
 
               {/* BLOCK: Zentraler Punkt (bleibt zentriert auf der Linie) */}
               <div
-                className={`flex items-center absolute top-5 left-1/2 -translate-x-1/2 hidden md:flex z-30`}
+                className={`hidden md:flex items-center absolute top-5 left-1/2 -translate-x-1/2 z-30`}
               >
                 <div className="w-5 h-5 rounded-full" style={{ backgroundColor: '#7C95B0' }} />
               </div>
