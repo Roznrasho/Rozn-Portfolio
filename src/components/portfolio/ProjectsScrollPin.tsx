@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Section } from "./Section";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Github, ExternalLink } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -16,6 +17,8 @@ type Item = {
   imageUrl: string;
   githubUrl?: string;
   liveUrl?: string;
+  languages?: string[];
+  tools?: string[];
 };
 
 export default function ProjectsScrollPin({ items }: { items?: Item[] }) {
@@ -109,18 +112,82 @@ export default function ProjectsScrollPin({ items }: { items?: Item[] }) {
     });
   }, [active]);
 
-  return (
-    <Section
-      id="projects-scroll"
-  title="Meine Projekte"
-  titleClassName="-mb-20"
-      underlineColor={"hsl(var(--primary))"}
-      style={{
-        backgroundImage: 'linear-gradient(to right, rgba(30,75,115,0.46), transparent)',
-        backgroundColor: 'rgba(30,75,115,0.08)',
-        backgroundRepeat: 'no-repeat',
-      }}
+  // Prepare JSX nodes to keep the JSX tree simple and avoid complex nested inline maps
+  const imageNodes = data.map((d, i) => (
+    <div
+      key={d.id}
+      className={`projects-image w-full h-full flex items-center justify-center`}
+      style={{ position: i === active ? 'relative' : 'absolute', inset: 0 }}
     >
+      <div className="relative w-full h-full flex items-center justify-center p-0">
+        <div
+          className={`w-[390px] md:w-[470px] lg:w-[550px] h-[32vh] md:h-[40vh] rounded-lg overflow-hidden shadow-lg ring-1 ring-black/6 transform transition-all duration-500 ${i === active ? 'scale-100' : 'scale-98'}`}
+          role="img"
+          aria-label={d.title}
+          style={{
+            backgroundImage: `url(${d.imageUrl})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: 'transparent',
+          }}
+        />
+      </div>
+    </div>
+  ));
+
+  const panelNodes = data.map((d) => (
+    <div key={d.id} className="projects-panel min-h-[60vh] flex items-center">
+      <div>
+        <h3 className="text-3xl md:text-4xl font-semibold mb-3">{d.title}</h3>
+        <p className="text-lg md:text-xl text-muted-foreground max-w-prose">{d.description}</p>
+        <div className="mt-4">
+          {d.languages && d.languages.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-2">
+              {d.languages.map((lang) => (
+                <Badge key={lang} variant="secondary" className="text-xs">
+                  {lang}
+                </Badge>
+              ))}
+            </div>
+          )}
+
+          {d.tools && d.tools.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {d.tools.map((tool) => (
+                <Badge key={tool} variant="outline" className="text-xs">
+                  {tool}
+                </Badge>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-2 flex gap-3">
+            {d.githubUrl && (
+              <Button variant="default" size="default" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <a href={d.githubUrl} target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'hsl(300 24% 75%)', color: 'hsl(var(--primary-foreground))' }}>
+                  <Github className="mr-2 h-4 w-4" />
+                  View Code
+                </a>
+              </Button>
+            )}
+
+            {d.liveUrl && (
+              <Button variant="default" size="default" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <a href={d.liveUrl} target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'hsl(300 24% 75%)', color: 'hsl(var(--primary-foreground))' }}>
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  View Live
+                </a>
+              </Button>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  ));
+
+  return (
+    <Section id="projects-scroll" title="Meine Projekte" titleClassName="-mb-20" underlineColor={"hsl(var(--primary))"} style={{ backgroundImage: 'linear-gradient(to right, rgba(30,75,115,0.46), transparent)', backgroundColor: 'rgba(30,75,115,0.08)', backgroundRepeat: 'no-repeat' }}>
       <div ref={containerRef} className="container mx-auto px-4">
         <div className="md:flex md:items-start gap-8">
           {/* Sticky Bild-Spalte */}
@@ -130,60 +197,13 @@ export default function ProjectsScrollPin({ items }: { items?: Item[] }) {
               className="sticky top-24 h-[61vh] md:h-[69vh] rounded-lg overflow-hidden bg-transparent"
               aria-hidden
             >
-              {data.map((d, i) => (
-                <div
-                  key={d.id}
-                  className={`projects-image w-full h-full flex items-center justify-center`}
-                  style={{ position: i === active ? 'relative' : 'absolute', inset: 0 }}
-                >
-                  <div className="relative w-full h-full flex items-center justify-center p-0">
-                    <div
-                      className={`w-[390px] md:w-[470px] lg:w-[550px] h-[32vh] md:h-[40vh] rounded-lg overflow-hidden shadow-lg ring-1 ring-black/6 transform transition-all duration-500 ${i === active ? 'scale-100' : 'scale-98'}`}
-                      role="img"
-                      aria-label={d.title}
-                      style={{
-                        backgroundImage: `url(${d.imageUrl})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: 'transparent',
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
+              {imageNodes}
             </div>
           </div>
 
           {/* Scrollbare Textabschnitte */}
           <div className="md:w-1/2 space-y-20">
-            {data.map((d) => (
-              <div key={d.id} className="projects-panel min-h-[60vh] flex items-center">
-                <div>
-                  <h3 className="text-3xl md:text-4xl font-semibold mb-3">{d.title}</h3>
-                  <p className="text-lg md:text-xl text-muted-foreground max-w-prose">{d.description}</p>
-                  <div className="mt-6 flex gap-3">
-                    {d.githubUrl && (
-                      <Button variant="default" size="default" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                        <a href={d.githubUrl} target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'hsl(300 24% 75%)', color: 'hsl(var(--primary-foreground))' }}>
-                          <Github className="mr-2 h-4 w-4" />
-                          View Code
-                        </a>
-                      </Button>
-                    )}
-
-                    {d.liveUrl && (
-                      <Button variant="default" size="default" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                        <a href={d.liveUrl} target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'hsl(300 24% 75%)', color: 'hsl(var(--primary-foreground))' }}>
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          View Live
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
+            {panelNodes}
           </div>
         </div>
       </div>

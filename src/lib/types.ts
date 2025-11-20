@@ -24,7 +24,8 @@ export type Project = {
   title_de?: string;
   description: string;
   description_de?: string;
-  techStack: string[];
+  languages?: string[];
+  tools?: string[];
   liveUrl: string;
   githubUrl?: string;
   imageId: string;

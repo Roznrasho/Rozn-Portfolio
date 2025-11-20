@@ -103,7 +103,8 @@ export const projects: Project[] = [
     title_de: 'Mein Portfolio',
     description: 'This is the portfolio you are currently viewing. It is built with Next.js, TypeScript, and Tailwind CSS. It features a responsive design and an AI-powered summary generator.',
     description_de: 'Dies ist das Portfolio, das Sie gerade ansehen. Es wurde mit Next.js, TypeScript und Tailwind CSS erstellt und verfügt über ein responsives Design sowie einen KI-gestützten Zusammenfassungs-Generator.',
-    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Genkit'],
+    languages: ['TypeScript'],
+    tools: ['Next.js', 'Tailwind CSS', 'Genkit'],
     liveUrl: '#',
     githubUrl: 'https://github.com/Roznrasho/Rozn-Portfolio',
     imageId: 'rozn-rasho-portrait'
@@ -114,7 +115,8 @@ export const projects: Project[] = [
     title_de: 'SmartPlates',
     description: 'A collaborative full-stack MERN application for discovering and sharing recipes. Users can create, edit, and browse recipes, with a focus on a clean and intuitive user experience.',
     description_de: 'Eine kollaborative Fullstack-MERN-Anwendung zum Entdecken und Teilen von Rezepten. Nutzer:innen können Rezepte erstellen, bearbeiten und durchsuchen, mit Fokus auf eine saubere und intuitive Benutzeroberfläche.',
-    techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+    languages: ['JavaScript'],
+    tools: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
     liveUrl: 'https://smart-plates.onrender.com/',
     githubUrl: 'https://github.com/Roznrasho/smartplates',
     imageId: 'project-smartplates'
@@ -125,7 +127,8 @@ export const projects: Project[] = [
     title_de: 'QR-Code Generator',
     description: 'A simple and efficient web application for generating QR codes from any text or URL. Built with vanilla JavaScript, it provides a fast and easy-to-use tool for creating QR codes on the fly.',
     description_de: 'Eine einfache und effiziente Webanwendung zum Erstellen von QR-Codes aus beliebigem Text oder URLs. Mit reinem JavaScript gebaut, bietet sie ein schnelles und leicht zu bedienendes Tool zur sofortigen QR-Code-Erzeugung.',
-    techStack: ['HTML', 'CSS', 'JavaScript'],
+    languages: ['JavaScript'],
+    tools: ['HTML', 'CSS'],
     liveUrl: 'https://roznrasho.github.io/QR-Code/',
     githubUrl: 'https://github.com/Roznrasho/QR-Code',
     imageId: 'project-qr-code'
@@ -136,7 +139,8 @@ export const projects: Project[] = [
     title_de: 'Memory Spiel',
     description: 'A classic card-matching memory game built with React. The game features a clean interface, smooth animations, and a scoring system to challenge players.',
     description_de: 'Ein klassisches Memory-Kartenspiel, gebaut mit React. Das Spiel bietet eine klare Oberfläche, flüssige Animationen und ein Punktesystem zur Herausforderung der Spieler:innen.',
-    techStack: ['React', 'CSS', 'JavaScript'],
+    languages: ['JavaScript'],
+    tools: ['React', 'CSS'],
     liveUrl: 'https://memory-game-ruby-nine.vercel.app',
     githubUrl: 'https://github.com/Roznrasho/Memory-Game',
     imageId: 'project-memory-game'
